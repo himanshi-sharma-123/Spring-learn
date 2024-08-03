@@ -5,6 +5,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="dev" class="org.example.Dev">
+    <property name="age" value="12"/>
 
   </bean>
 
