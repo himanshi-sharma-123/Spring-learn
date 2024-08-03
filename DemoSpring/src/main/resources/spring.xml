@@ -6,15 +6,20 @@
 
   <bean id="dev" class="org.example.Dev">
 <!--    <property name="age" value="12"/>-->
-    <constructor-arg value="14"/>
+<!--    <constructor-arg value="14"/>-->
+
+
+<!--    <property name="laptop" ref="lap1"/>-->
+      <constructor-arg ref="lap1"/>
+
 
   </bean>
 
-  <bean id="dev1" class="org.example.Dev">
+<!--  <bean id="dev1" class="org.example.Dev">-->
 
-  </bean>
+<!--  </bean>-->
 
-  <bean id="laptop" class="org.example.Laptop">
+  <bean id="lap1" class="org.example.Laptop">
 
   </bean>
 

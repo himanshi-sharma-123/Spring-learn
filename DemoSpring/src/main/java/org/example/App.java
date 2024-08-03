@@ -15,8 +15,8 @@ public class App
 //        Dev obj = context.getBean(Dev.class);
         Dev obj = (Dev) context.getBean("dev"); // name dev will return object that why write Dev before context.getBeans()
 //        obj.setAge(18);
-        System.out.println(obj.getAge());
-//        obj.build();
+//        System.out.println(obj.getAge());
+        obj.build();
 
 
     }
