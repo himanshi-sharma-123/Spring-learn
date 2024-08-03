@@ -4,13 +4,21 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="dev" class="org.example.Dev">
-<!--    <property name="age" value="12"/>-->
+<!--  <bean id="dev" class="org.example.Dev" autowire="byName">-->
+  <bean id="dev" class="org.example.Dev" autowire="byType">
+
+
+  <!--      <property name="comp" ref="lap1"/>-->
+<!--      <property name="comp" ref="desk1"/>-->
+
+
+
+      <!--    <property name="age" value="12"/>-->
 <!--    <constructor-arg value="14"/>-->
 
 
 <!--    <property name="laptop" ref="lap1"/>-->
-      <constructor-arg ref="lap1"/>
+<!--      <constructor-arg ref="lap1"/>-->
 
 
   </bean>
@@ -19,8 +27,14 @@
 
 <!--  </bean>-->
 
-  <bean id="lap1" class="org.example.Laptop">
+<!--  <bean id="lap1" class="org.example.Laptop">-->
+    <bean id="comp" class="org.example.Laptop" primary="true">
 
-  </bean>
+
+    </bean>
+
+    <bean id="comp1" class="org.example.Desktop">
+
+    </bean>
 
 </beans>
