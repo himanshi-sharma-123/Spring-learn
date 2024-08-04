@@ -33,4 +33,9 @@ public class ProductController {
     public void updateProduct(@RequestBody Product prod){ // RequestBody is responsible for get data in the request and sent that in the reference
         service.updateProduct(prod);
     }
+
+    @DeleteMapping("/products/{prodId}")
+    public void deleteProduct(@PathVariable int prodId){
+        service.deleteProduct(prodId);
+    }
 }
