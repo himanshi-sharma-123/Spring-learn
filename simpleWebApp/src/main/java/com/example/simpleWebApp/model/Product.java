@@ -1,13 +1,19 @@
 package com.example.simpleWebApp.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
-
 @Data
+@Entity
 public class Product {
 
+    @Id
     private int prodId;
     private String prodName;
     private int price;
+
+    public Product() {
+    }
 
     public Product(int prodId, String prodName, int price) {
         this.prodId = prodId;
