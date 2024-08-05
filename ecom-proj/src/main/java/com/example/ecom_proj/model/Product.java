@@ -54,5 +54,6 @@ public class Product {
 
 
     public void setImageData(byte[] bytes) {
+
     }
 }
