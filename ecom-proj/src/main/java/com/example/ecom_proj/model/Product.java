@@ -43,4 +43,10 @@ public class Product {
 
     public void setImageDate(byte[] bytes) {
     }
+
+    public byte[] getImageData() {
+    }
+
+    public String getImageType() {
+    }
 }
