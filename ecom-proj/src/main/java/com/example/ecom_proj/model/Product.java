@@ -45,8 +45,14 @@ public class Product {
     }
 
     public byte[] getImageData() {
+        return imageData;
     }
 
     public String getImageType() {
+        return imageType;
+    }
+
+
+    public void setImageData(byte[] bytes) {
     }
 }
