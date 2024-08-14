@@ -78,7 +78,7 @@ public class SpringConfig {
 //
 //        UserDetails user2 = User
 //                .withDefaultPasswordEncoder()  // it is deprecated, don't use it in production
-//                .username("manashvi")
+//                .username("manasvi")
 //                .password("man")
 //                .roles("ADMIN")
 //                .build();
