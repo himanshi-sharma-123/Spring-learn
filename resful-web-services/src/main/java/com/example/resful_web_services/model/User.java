@@ -24,7 +24,7 @@ public class User {
     private Integer id;
 
     @Size(min=2, message = "Name should have atleast 2 characters")
-    @JsonProperty("user_name")
+//    @JsonProperty("user_name")
     private String name;
 
     @Past(message = "Birth Date should be in the past")

@@ -28,17 +28,17 @@ public class UserController {
         return service.findAll();
     }
 
-    @GetMapping("/users/{id}")
-    public EntityModel<User> retrieveUser(@PathVariable Integer id){
-        User user = service.findOne(id);
-        if(user == null)
-            throw new UserNotFoundException("id: " + id);
-
-        EntityModel<User> entityModel = EntityModel.of(user);
-        WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
-        entityModel.add(link.withRel("all-users"));
-        return entityModel;
-    }
+//    @GetMapping("/users/{id}")
+//    public EntityModel<User> retrieveUser(@PathVariable Integer id){
+//        User user = service.findOne(id);
+//        if(user == null)
+//            throw new UserNotFoundException("id: " + id);
+//
+//        EntityModel<User> entityModel = EntityModel.of(user);
+//        WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
+//        entityModel.add(link.withRel("all-users"));
+//        return entityModel;
+//    }
 
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user){
@@ -50,10 +50,10 @@ public class UserController {
          return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable int id){
-        service.deleteById(id);
-    }
+//    @DeleteMapping("/users/{id}")
+//    public void deleteUser(@PathVariable int id){
+//        service.deleteById(id);
+//    }
 
 
 }
