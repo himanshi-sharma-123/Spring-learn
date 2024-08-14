@@ -2,6 +2,7 @@ package com.example.resful_web_services.controller;
 
 import com.example.resful_web_services.model.Post;
 import com.example.resful_web_services.model.User;
+import com.example.resful_web_services.repo.PostRepository;
 import com.example.resful_web_services.repo.UserRepository;
 import com.example.resful_web_services.service.UserDaoService;
 import jakarta.validation.Valid;
@@ -22,10 +23,13 @@ public class UserJpaController {
     @Autowired
     private UserDaoService service;
     private UserRepository repository;
+    private PostRepository postRepository;
 
-    public UserJpaController(UserDaoService service, UserRepository repository){
+    public UserJpaController(UserDaoService service, UserRepository repository, PostRepository postRepository){
         this.service = service;
         this.repository = repository;
+        this.postRepository = postRepository;
+
     }
 
     @GetMapping("/jpa/users")
@@ -71,5 +75,22 @@ public class UserJpaController {
         return user.get().getPosts();
     }
 
+    @PostMapping("/jpa/users/{id}/posts")
+    public ResponseEntity<User> createPostForUser(@PathVariable int id, @Valid @RequestBody Post post){
+
+        Optional<User> user = repository.findById(id);
+        if (user.isEmpty())
+            throw new UserNotFoundException("id: " + id);
+
+        post.setUser(user.get());
+
+        Post savedPost = postRepository.save(post);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedPost.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
+    }
 
 }
