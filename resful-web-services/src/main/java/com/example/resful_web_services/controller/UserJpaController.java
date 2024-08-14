@@ -1,5 +1,6 @@
 package com.example.resful_web_services.controller;
 
+import com.example.resful_web_services.model.Post;
 import com.example.resful_web_services.model.User;
 import com.example.resful_web_services.repo.UserRepository;
 import com.example.resful_web_services.service.UserDaoService;
@@ -57,6 +58,17 @@ public class UserJpaController {
     @DeleteMapping("/jpa/users/{id}")
     public void deleteUser(@PathVariable int id){
         repository.deleteById(id);
+    }
+
+    //********************** CONTROLLERS FOR POST ******************************//
+
+    @GetMapping("/jpa/users/{id}/posts")
+    public List<Post> retrievePostsForUser(@PathVariable int id) {
+        Optional<User> user = repository.findById(id);
+        if (user.isEmpty())
+            throw new UserNotFoundException("id: " + id);
+
+        return user.get().getPosts();
     }
 
 

@@ -72,4 +72,12 @@ public class User {
                 ", birthDate=" + birthDate +
                 '}';
     }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 }
