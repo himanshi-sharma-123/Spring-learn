@@ -56,7 +56,7 @@ public class QuizService {
        for(Response response: responses){
            if(response.getResponse().equals(questions.get(i).getRightAnswer()))
                right++;
-           
+
            i++;
        }
 
