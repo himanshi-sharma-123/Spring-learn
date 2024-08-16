@@ -37,30 +37,17 @@ public class QuizService {
     }
 
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(Integer id) {
-        Optional<Quiz> quiz = quizDao.findById(id);
-//        List<Question> questionsFromDb = quiz.get().getQuestions();
-        List<QuestionWrapper> questionsForUser = new ArrayList<>();
+        Quiz quiz = quizDao.findById(id).get();
+        List<Integer> questionIds = quiz.getQuestionIds();
+        ResponseEntity<List<QuestionWrapper>> questions = quizInterface.getQuestionsFromId(questionIds);
 
-//        for(Question q: questionsFromDb){
-//            QuestionWrapper qw = new QuestionWrapper(q.getId(), q.getQuestionTitle(), q.getOption1(), q.getOption2(), q.getOption3(), q.getOption4());
-//            questionsForUser.add(qw);
-//        }
-
-        return new ResponseEntity<>(questionsForUser, HttpStatus.OK);
+        return questions;
     }
 
     public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
-       Quiz quiz = quizDao.findById(id).get();
-//       List<Question> questions = quiz.getQuestions();
-       int right = 0, i = 0;
 
-//       for(Response response: responses){
-//           if(response.getResponse().equals(questions.get(i).getRightAnswer()))
-//               right++;
-//
-//           i++;
-//       }
+        ResponseEntity<Integer> score = quizInterface.getScore(responses);
 
-       return new ResponseEntity<>(right, HttpStatus.OK);
+       return score;
     }
 }
